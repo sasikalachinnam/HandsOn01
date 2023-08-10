@@ -1,0 +1,38 @@
+package HandsOn;
+
+class Rectangle {
+    private double length;
+    private double width;
+
+    public void setRectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    public double getArea() {
+        return length * width;
+    }
+}
+
+class Box extends Rectangle {
+    private double height;
+
+    public void setBox(double length, double width, double height) {
+        setRectangle(length, width);
+        this.height = height;
+    }
+
+    public double getVolume() {
+        return getArea() * height;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box box = new Box();
+        box.setBox(4.0, 5.0, 6.0);
+        
+        double volume = box.getVolume();
+        System.out.println("Box Volume: " + volume);
+    }
+}
