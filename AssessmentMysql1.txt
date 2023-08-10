@@ -1,0 +1,78 @@
+CREATE TABLE Trainer_Info (
+    Trainer_Id CHAR(20) PRIMARY KEY,
+    Salutation CHAR(7),
+    Trainer_Name VARCHAR(30),
+    Trainer_Location VARCHAR(30),
+    Trainer_Track CHAR(15),
+    Trainer_Qualification VARCHAR(100),
+    Trainer_Experience INTEGER,
+    Trainer_Email VARCHAR(100),
+    Trainer_Password CHAR(20)
+);
+
+
+CREATE TABLE Batch_Info (
+    Batch_Id CHAR(20) PRIMARY KEY,
+    Batch_Owner VARCHAR(30),
+    Batch_BU_Name VARCHAR(30)
+);
+
+
+CREATE TABLE Module_Info (
+    Module_Id CHAR(20) PRIMARY KEY,
+    Module_Name VARCHAR(40),
+    Module_Duration INTEGER
+);
+
+CREATE TABLE Associate_Info (
+    Associate_Id CHAR(20) PRIMARY KEY,
+    Salutation CHAR(7),
+    Associate_Name VARCHAR(30),
+    Associate_Location VARCHAR(30),
+    Associate_Track CHAR(15),
+    Associate_Qualification VARCHAR(200),
+    Associate_Email VARCHAR(100),
+    Associate_Password CHAR(20)
+);
+
+CREATE TABLE Questions (
+    Question_Id CHAR(20) PRIMARY KEY,
+    Module_Id CHAR(20),
+    Question_Text VARCHAR(900)
+);
+
+
+CREATE TABLE Associate_Status (
+    Associate_Id CHAR(20),
+    Module_Id CHAR(20),
+    Start_Date DATE,
+    End_Date DATE,
+    AFeedbackGiven CHAR(20),
+    TFeedbackGiven CHAR(20),
+    PRIMARY KEY (Associate_Id, Module_Id)
+);
+
+
+CREATE TABLE Trainer_Feedback (
+    Trainer_Id CHAR(20),
+    Question_Id CHAR(20),
+    Batch_Id CHAR(20),
+    Module_Id CHAR(20),
+    Trainer_Rating INTEGER,
+    PRIMARY KEY (Trainer_Id, Question_Id, Batch_Id, Module_Id)
+);
+
+
+CREATE TABLE Associate_Feedback (
+    Associate_Id CHAR(20),
+    Question_Id CHAR(20),
+    Module_Id CHAR(20),
+    Associate_Rating INTEGER,
+    PRIMARY KEY (Associate_Id, Question_Id, Module_Id)
+);
+
+
+CREATE TABLE Login_Details (
+    User_Id CHAR(20) PRIMARY KEY,
+    Password CHAR(20)
+);
